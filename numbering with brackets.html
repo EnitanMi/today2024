@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sub Numbering with Brackets</title>
+    <style>
+        /* Style for the main list */
+        ol {
+            list-style: none;
+            counter-reset: item;
+        }
+
+        /* Style for the list items */
+        ol > li {
+            counter-increment: item;
+            margin-bottom: 5px;
+        }
+
+        /* Apply the numbering with brackets */
+        ol > li::before {
+            content: "[" counter(item) "] ";
+            font-weight: bold;
+        }
+
+        /* Style for nested lists */
+        ol ol > li {
+            counter-increment: item;
+        }
+
+        /* Apply nested numbering */
+        ol ol > li::before {
+            content: "[" counter(item, decimal) "." counter(item) "] ";
+        }
+    </style>
+</head>
+<body>
+    <h1>Numbered List with Brackets</h1>
+    <ol>
+        <li>First Item</li>
+        <li>Second Item
+            <ol>
+                <li>Second Item - Sub Item 1</li>
+                <li>Second Item - Sub Item 2</li>
+                <li>Second Item - Sub Item 3</li>
+            </ol>
+        </li>
+        <li>Third Item</li>
+        <li>Fourth Item
+            <ol>
+                <li>Fourth Item - Sub Item 1</li>
+                <li>Fourth Item - Sub Item 2
+                    <ol>
+                        <li>Sub-sub Item 1</li>
+                        <li>Sub-sub Item 2</li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+    </ol>
+</body>
+</html>
